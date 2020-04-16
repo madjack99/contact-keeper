@@ -40,7 +40,7 @@ router.post(
       const salt = await bcrypt.genSalt();
       user.password = await bcrypt.hash(password, salt);
 
-      // await user.save();
+      await user.save();
 
       const payload = {
         user: {
