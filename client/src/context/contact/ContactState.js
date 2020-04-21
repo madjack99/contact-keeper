@@ -37,6 +37,7 @@ const ContactState = (props) => {
         phone: '777-777-7747',
       },
     ],
+    current: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -53,8 +54,14 @@ const ContactState = (props) => {
   };
 
   // Set current contact
+  const setCurrent = (contact) => {
+    dispatch({ type: SET_CURRENT, payload: contact });
+  };
 
   // Clear current contact
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   // Update contact
 
@@ -67,6 +74,9 @@ const ContactState = (props) => {
       value={{
         addContact,
         deleteContact,
+        setCurrent,
+        clearCurrent,
+        current: state.current,
         contacts: state.contacts,
       }}
     >
